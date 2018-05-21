@@ -8,12 +8,15 @@ RUN rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.
 # Install Node...
 RUN yum install -y npm
 
-# Copy app to /src
-COPY . /src
+# Create $HOME/src1 folder
+mkdir -p $HOME/src1
 
-# Install app and dependencies into /src
-RUN cd /src; npm install
+# Copy app to $HOME/src1
+COPY . $HOME/src1
+
+# Install app and dependencies into $HOME/src1
+RUN cd $HOME/src1; npm install
 
 EXPOSE 8080
 
-CMD cd /src && node ./app.js
+CMD cd $HOME/src1 && node ./app.js
