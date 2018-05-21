@@ -9,7 +9,7 @@ RUN rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.
 RUN yum install -y npm
 
 # Create $HOME/src1 folder
-mkdir -p $HOME/src1
+RUN mkdir -p $HOME/src1
 
 # Copy app to $HOME/src1
 COPY . $HOME/src1
